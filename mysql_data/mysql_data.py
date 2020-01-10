@@ -103,6 +103,29 @@ time_str = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())
 # ;
 # """
 
+merge_sql_tmp="""
+INSERT OVERWRITE TABLE {odps_table} PARTITION(ds='${{bdp.system.bizdae}}')
+SELECT  {col_name_all}
+FROM    (
+            SELECT  {col_name_all}
+                    ,ROW_NUMBER() OVER(PARTITION BY a.{PK} ORDER BY a.update_time DESC ) AS num
+            FROM    (
+                        SELECT  {col_name_all}
+                        FROM    {odps_table}
+                        WHERE   ds = '${{befor_yesteday}}'
+                        UNION ALL
+                        SELECT  {col_name_all}
+                        FROM    {odps_table}_delta
+                        WHERE   ds = '${{bdp.system.bizdae}}'
+                    ) a
+        ) b
+WHERE   num = 1
+;
+"""
+
+
+
+
 
 desc_sql_tmp="desc {dabase}.{table_name};"
 
@@ -204,6 +227,7 @@ file='数据中台ODS层设计文档_v1.0@20200108.xlsx'
 
 def mysql_data_change(sq_data):
     '''
+
     :param sq_data: sql查询结果
     :return: numpy数据输出
     '''
@@ -254,7 +278,7 @@ file_xlsx="table_info_%s.xlsx"%time_str
 writer=pd.ExcelWriter(file_xlsx)
 
 file_sql="create_table_info_%s.sql"%time_str
-
+file_merge_sql="merge_sql_info_%s.sql"%time_str
 
 data1=db_table()
 for index, row in data1.iterrows():
@@ -271,6 +295,8 @@ for index, row in data1.iterrows():
     all_date=mysql_data_change(info_data)
     desc = mysql_data_change(desc_data)
     df4=col_position(all_date,desc)
+    array_PK = df4[df4['key_info'] == 'PK']['col_name'].values
+    PK=array_PK[0]
     df4.to_excel(writer,sheet_name=table_name)
 
     for index, row in df4.iterrows():
@@ -280,6 +306,7 @@ for index, row in data1.iterrows():
 
     type_dict=type_map()
     col_infos = []
+    col_names = []
     for index, row in df4.iterrows():
         col_name=row['col_name']
         col_type=row['col_type']
@@ -291,6 +318,8 @@ for index, row in data1.iterrows():
             odps_type = type_dict[data_type]
         col_info = "{col_name} {odps_type} COMMENT '{col_comment}'".format(col_name=col_name,odps_type=odps_type,col_comment=col_comment)
         col_infos.append(col_info)
+        col_names.append(col_name)
+    col_name_all=',\n'.join(col_names)
     col_info_all=',\n'.join(col_infos)
     create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table} (
         {col_info_all}) COMMENT '{tb_comment}'
@@ -305,5 +334,10 @@ for index, row in data1.iterrows():
             '''.format(odps_table=odps_table, col_info_all=col_info_all, tb_comment=tb_comment)
         with open(os.path.join(os.getcwd(), file_sql), 'a+', encoding='utf-8') as f:
             f.write(create_tb_sql)
+        nmerge_sql=merge_sql_tmp.format(odps_table=odps_table,col_name_all=col_name_all,PK=PK)
+        with open(os.path.join(os.getcwd(), file_merge_sql), 'a+', encoding='utf-8') as f:
+            f.write(nmerge_sql)
+
     print("{table_name} 表建表语句已生成".format(table_name=table_name))
+
 writer.save()
