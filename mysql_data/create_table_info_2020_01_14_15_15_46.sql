@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS s_crm_mb_person (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -27,9 +27,9 @@ has_to_pay_money_vir string COMMENT '应付金额',
 contact_age_vir string COMMENT '年龄',
 car_type_vir string COMMENT '车型',
 late_tbstore_id_vir string COMMENT 'tb店铺名称') COMMENT '全局统一会员'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_brand_contact (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_brand_contact (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -96,9 +96,9 @@ note string COMMENT '备注信息',
 hotel_id string COMMENT '来源酒店',
 mac_address string COMMENT 'Mac地址',
 channel_name string COMMENT '渠道名称') COMMENT '品牌客户表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -137,9 +137,9 @@ tb_nick_name string COMMENT '淘宝昵称',
 member_level_vir string COMMENT '会员等级虚拟字段',
 member_level_vir string COMMENT '会员等级虚拟字段',
 points decimal COMMENT '当前品牌号下总积分') COMMENT '会员'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -162,8 +162,8 @@ tq_coupon_name string COMMENT '淘企店优惠券名称',
 coupon_config_id bigint COMMENT '积分换券设置表主键',
 person_id bigint COMMENT '全局统一会员id',
 brand_contact_id bigint COMMENT '客户品牌id') COMMENT '会员积分换券记录表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -189,7 +189,7 @@ person_id bigint COMMENT '全局统一会员id',
 brand_contact_id bigint COMMENT '客户品牌id') COMMENT '会员积分换券记录表'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -227,8 +227,8 @@ system_id string COMMENT 'system_id',
 crm_order_num string COMMENT 'crm_order_num',
 order_screen_shot_address string COMMENT '订单截图地址',
 outer_guide_id string COMMENT '外部导购id') COMMENT '会员积分变化记录日志'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -269,7 +269,7 @@ order_screen_shot_address string COMMENT '订单截图地址',
 outer_guide_id string COMMENT '外部导购id') COMMENT '会员积分变化记录日志'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_mb_store (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -313,9 +313,9 @@ category_third bigint COMMENT '三级分类',
 business_pattern_id bigint COMMENT 'None',
 shop_status string COMMENT '商铺状态',
 store_level string COMMENT '门店级别') COMMENT '系统门店'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_store_commercial_category (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_store_commercial_category (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -331,10 +331,11 @@ business_format_id bigint COMMENT '业态规则ID',
 level bigint COMMENT '级别',
 parent_id bigint COMMENT '父级ID',
 system_id string COMMENT '系统ID',
-status bigint COMMENT '状态') COMMENT '业态规则分类表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_wx_fans (
-        id bigint COMMENT 'id',
+status bigint COMMENT '状态',
+trade_id string COMMENT '外部业态ID') COMMENT '业态规则分类表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_wx_fans (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -369,10 +370,9 @@ bind_store_id bigint COMMENT '绑定门店ID',
 bind_guide_id bigint COMMENT '绑定导购员ID',
 wx_union_id bigint COMMENT 'union_fans外键',
 app_type string COMMENT '粉丝来源',
-brand_id bigint COMMENT '品牌id') COMMENT '微信粉丝表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mbc_coupon_receive_records (
-        id bigint COMMENT 'id',
+brand_id bigint COMMENT '品牌id') COMMENT '微信粉丝表';
+        CREATE TABLE IF NOT EXISTS s_crm_mbc_coupon_receive_records (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -431,10 +431,9 @@ coupon_cost_points decimal COMMENT '优惠券价值积分',
 is_price bigint COMMENT '是否有价',
 valid_begin_time string COMMENT '有效期开始时间',
 valid_end_time string COMMENT '有效期结束时间',
-system_id string COMMENT '系统标识') COMMENT '优惠券领取记录'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order (
-        id bigint COMMENT 'id',
+system_id string COMMENT '系统标识') COMMENT '优惠券领取记录';
+        CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -476,9 +475,10 @@ person_id bigint COMMENT '所属人唯一标识',
 brand_id bigint COMMENT '品牌ID',
 extend_info string COMMENT '扩展信息',
 product_category string COMMENT '商品分类',
-night_audit_amount decimal COMMENT '夜审金额') COMMENT '系统子订单'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_delta (
+night_audit_amount decimal COMMENT '夜审金额',
+crs_order_no string COMMENT 'CRS系统订单号') COMMENT '系统子订单'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -521,10 +521,11 @@ person_id bigint COMMENT '所属人唯一标识',
 brand_id bigint COMMENT '品牌ID',
 extend_info string COMMENT '扩展信息',
 product_category string COMMENT '商品分类',
-night_audit_amount decimal COMMENT '夜审金额') COMMENT '系统子订单'
+night_audit_amount decimal COMMENT '夜审金额',
+crs_order_no string COMMENT 'CRS系统订单号') COMMENT '系统子订单'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_ticket_verified (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -549,10 +550,9 @@ ticket_code string COMMENT '票码',
 ticket_amount decimal COMMENT '票金额',
 verified_time string COMMENT '核销时间',
 verified_type string COMMENT '核销类型',
-person_id bigint COMMENT '所属人唯一标识') COMMENT '门票核销信息'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info (
-        id bigint COMMENT 'None',
+person_id bigint COMMENT '所属人唯一标识') COMMENT '门票核销信息';
+        CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info (
+            id bigint COMMENT 'None',
 tenant_id bigint COMMENT 'None',
 authorizer_appid string COMMENT 'None',
 is_authorization_canceled bigint COMMENT 'None',
@@ -582,8 +582,8 @@ mch_id string COMMENT 'None',
 api_key string COMMENT 'None',
 brand_id bigint COMMENT 'None',
 cert_path string COMMENT 'None') COMMENT 'None'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info_delta (
                 id bigint COMMENT 'None',
 tenant_id bigint COMMENT 'None',
 authorizer_appid string COMMENT 'None',

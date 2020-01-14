@@ -314,7 +314,8 @@ person_id,
 brand_id,
 extend_info,
 product_category,
-night_audit_amount
+night_audit_amount,
+crs_order_no
 FROM    (
             SELECT  id,
 tenant_id,
@@ -358,7 +359,8 @@ person_id,
 brand_id,
 extend_info,
 product_category,
-night_audit_amount
+night_audit_amount,
+crs_order_no
                     ,ROW_NUMBER() OVER(PARTITION BY a.id ORDER BY a.update_time DESC ) AS num
             FROM    (
                         SELECT  id,
@@ -403,7 +405,8 @@ person_id,
 brand_id,
 extend_info,
 product_category,
-night_audit_amount
+night_audit_amount,
+crs_order_no
                         FROM    s_crm_sfso_t_order
                         WHERE   ds = '${befor_yesteday}'
                         UNION ALL
@@ -449,7 +452,8 @@ person_id,
 brand_id,
 extend_info,
 product_category,
-night_audit_amount
+night_audit_amount,
+crs_order_no
                         FROM    s_crm_sfso_t_order_delta
                         WHERE   ds = '${bdp.system.bizdae}'
                     ) a

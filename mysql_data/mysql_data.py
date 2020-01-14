@@ -317,13 +317,20 @@ for index, row in data1.iterrows():
         col_names.append(col_name)
     col_name_all=',\n'.join(col_names)
     col_info_all=',\n'.join(col_infos)
-    create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table} (
-        {col_info_all}) COMMENT '{tb_comment}'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    '''.format(odps_table=odps_table,col_info_all=col_info_all,tb_comment=tb_comment)
-    with open(os.path.join(os.getcwd(), file_sql), 'a+', encoding='utf-8') as f:
-        f.write(create_tb_sql)
-    if is_update=='U'and (is_full=='初始化一次' or is_full=='增量/天'):
+    if (is_update=='U'and is_full=='初始化一次') or is_full == '全量/天':
+        create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table} (
+            {col_info_all}) COMMENT '{tb_comment}'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        '''.format(odps_table=odps_table,col_info_all=col_info_all,tb_comment=tb_comment)
+        with open(os.path.join(os.getcwd(), file_sql), 'a+', encoding='utf-8') as f:
+            f.write(create_tb_sql)
+    elif is_full =='增量/天' :
+        create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table} (
+            {col_info_all}) COMMENT '{tb_comment}';
+        '''.format(odps_table=odps_table,col_info_all=col_info_all,tb_comment=tb_comment)
+        with open(os.path.join(os.getcwd(), file_sql), 'a+', encoding='utf-8') as f:
+            f.write(create_tb_sql)
+    if is_update=='U'and is_full=='初始化一次' :
         create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table}_delta (
                 {col_info_all}) COMMENT '{tb_comment}'
             PARTITIONED BY (ds string) ;
