@@ -216,6 +216,17 @@ WHERE
   bc.table_name in ('{table_name}')
 ) paas_info 
 on source_info.col_name = paas_info.col_name
+GROUP BY paas_info.schema_name,
+paas_info.tb_name,
+paas_info.tb_comment,
+source_info.col_name,
+source_info.col_type,
+source_info.data_type,
+source_info.is_not_null,
+paas_info.col_comment,
+source_info.key_info,
+source_info.k_refer_tb_name,
+source_info.k_refer_col_name
 ;
 """
 
@@ -326,7 +337,8 @@ for index, row in data1.iterrows():
             f.write(create_tb_sql)
     elif is_full =='增量/天' :
         create_tb_sql = '''CREATE TABLE IF NOT EXISTS {odps_table} (
-            {col_info_all}) COMMENT '{tb_comment}';
+            {col_info_all}) COMMENT '{tb_comment}'
+            PARTITIONED BY (ds string) ;
         '''.format(odps_table=odps_table,col_info_all=col_info_all,tb_comment=tb_comment)
         with open(os.path.join(os.getcwd(), file_sql), 'a+', encoding='utf-8') as f:
             f.write(create_tb_sql)
