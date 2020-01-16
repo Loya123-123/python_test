@@ -104,7 +104,7 @@ time_str = time.strftime('%Y_%m_%d_%H_%M_%S', time.localtime())
 # """
 
 merge_sql_tmp="""
-INSERT OVERWRITE TABLE {odps_table} PARTITION(ds='${{bdp.system.bizdae}}')
+INSERT OVERWRITE TABLE {odps_table} PARTITION(ds='${{bdp.system.bizdate}}')
 SELECT  {col_name_all}
 FROM    (
             SELECT  {col_name_all}
@@ -116,7 +116,7 @@ FROM    (
                         UNION ALL
                         SELECT  {col_name_all}
                         FROM    {odps_table}_delta
-                        WHERE   ds = '${{bdp.system.bizdae}}'
+                        WHERE   ds = '${{bdp.system.bizdate}}'
                     ) a
         ) b
 WHERE   num = 1
