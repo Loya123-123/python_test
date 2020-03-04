@@ -1,7 +1,7 @@
 import pandas as pd
 import openpyxl
 
-file='数据中台ODS层设计文档_v1.0@20200108.xlsx'
+file='数据中台ODS层设计文档_v1.0@20200110.xlsx'
 
 # def type_map():
 #     '''

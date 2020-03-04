@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS s_crm_mb_person (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -27,9 +27,9 @@ has_to_pay_money_vir string COMMENT '应付金额',
 contact_age_vir string COMMENT '年龄',
 car_type_vir string COMMENT '车型',
 late_tbstore_id_vir string COMMENT 'tb店铺名称') COMMENT '全局统一会员'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_brand_contact (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_brand_contact (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -94,10 +94,11 @@ appellation string COMMENT '称谓',
 constellation string COMMENT '星座',
 note string COMMENT '备注信息',
 hotel_id string COMMENT '来源酒店',
-mac_address string COMMENT 'Mac地址') COMMENT '品牌客户表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member (
-        id bigint COMMENT 'id',
+mac_address string COMMENT 'Mac地址',
+channel_name string COMMENT '渠道名称') COMMENT '品牌客户表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -134,11 +135,10 @@ child_channel string COMMENT '子渠道',
 tb_brand_employee_no string COMMENT '淘宝品牌号导购编号',
 tb_nick_name string COMMENT '淘宝昵称',
 member_level_vir string COMMENT '会员等级虚拟字段',
-member_level_vir string COMMENT '会员等级虚拟字段',
 points decimal COMMENT '当前品牌号下总积分') COMMENT '会员'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -161,8 +161,8 @@ tq_coupon_name string COMMENT '淘企店优惠券名称',
 coupon_config_id bigint COMMENT '积分换券设置表主键',
 person_id bigint COMMENT '全局统一会员id',
 brand_contact_id bigint COMMENT '客户品牌id') COMMENT '会员积分换券记录表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_coupon_deal_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -188,7 +188,7 @@ person_id bigint COMMENT '全局统一会员id',
 brand_contact_id bigint COMMENT '客户品牌id') COMMENT '会员积分换券记录表'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -226,8 +226,8 @@ system_id string COMMENT 'system_id',
 crm_order_num string COMMENT 'crm_order_num',
 order_screen_shot_address string COMMENT '订单截图地址',
 outer_guide_id string COMMENT '外部导购id') COMMENT '会员积分变化记录日志'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_member_points_log_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -268,7 +268,7 @@ order_screen_shot_address string COMMENT '订单截图地址',
 outer_guide_id string COMMENT '外部导购id') COMMENT '会员积分变化记录日志'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_mb_store (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -312,9 +312,9 @@ category_third bigint COMMENT '三级分类',
 business_pattern_id bigint COMMENT 'None',
 shop_status string COMMENT '商铺状态',
 store_level string COMMENT '门店级别') COMMENT '系统门店'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_store_commercial_category (
-        id bigint COMMENT 'id',
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_store_commercial_category (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -330,10 +330,11 @@ business_format_id bigint COMMENT '业态规则ID',
 level bigint COMMENT '级别',
 parent_id bigint COMMENT '父级ID',
 system_id string COMMENT '系统ID',
-status bigint COMMENT '状态') COMMENT '业态规则分类表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mb_wx_fans (
-        id bigint COMMENT 'id',
+status bigint COMMENT '状态',
+trade_id string COMMENT '外部业态ID') COMMENT '业态规则分类表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_wx_fans (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -369,9 +370,9 @@ bind_guide_id bigint COMMENT '绑定导购员ID',
 wx_union_id bigint COMMENT 'union_fans外键',
 app_type string COMMENT '粉丝来源',
 brand_id bigint COMMENT '品牌id') COMMENT '微信粉丝表'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_mbc_coupon_receive_records (
-        id bigint COMMENT 'id',
+            PARTITIONED BY (ds string) ;
+        CREATE TABLE IF NOT EXISTS s_crm_mbc_coupon_receive_records (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -431,9 +432,9 @@ is_price bigint COMMENT '是否有价',
 valid_begin_time string COMMENT '有效期开始时间',
 valid_end_time string COMMENT '有效期结束时间',
 system_id string COMMENT '系统标识') COMMENT '优惠券领取记录'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order (
-        id bigint COMMENT 'id',
+            PARTITIONED BY (ds string) ;
+        CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order (
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -475,9 +476,10 @@ person_id bigint COMMENT '所属人唯一标识',
 brand_id bigint COMMENT '品牌ID',
 extend_info string COMMENT '扩展信息',
 product_category string COMMENT '商品分类',
-night_audit_amount decimal COMMENT '夜审金额') COMMENT '系统子订单'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_delta (
+night_audit_amount decimal COMMENT '夜审金额',
+crs_order_no string COMMENT 'CRS系统订单号') COMMENT '系统子订单'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_delta (
                 id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
@@ -520,10 +522,11 @@ person_id bigint COMMENT '所属人唯一标识',
 brand_id bigint COMMENT '品牌ID',
 extend_info string COMMENT '扩展信息',
 product_category string COMMENT '商品分类',
-night_audit_amount decimal COMMENT '夜审金额') COMMENT '系统子订单'
+night_audit_amount decimal COMMENT '夜审金额',
+crs_order_no string COMMENT 'CRS系统订单号') COMMENT '系统子订单'
             PARTITIONED BY (ds string) ;
             CREATE TABLE IF NOT EXISTS s_crm_sfso_t_order_ticket_verified (
-        id bigint COMMENT 'id',
+            id bigint COMMENT 'id',
 tenant_id bigint COMMENT 'tenant_id',
 organization bigint COMMENT 'organization',
 owner bigint COMMENT 'owner',
@@ -549,9 +552,9 @@ ticket_amount decimal COMMENT '票金额',
 verified_time string COMMENT '核销时间',
 verified_type string COMMENT '核销类型',
 person_id bigint COMMENT '所属人唯一标识') COMMENT '门票核销信息'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info (
-        id bigint COMMENT 'None',
+            PARTITIONED BY (ds string) ;
+        CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info (
+            id bigint COMMENT 'None',
 tenant_id bigint COMMENT 'None',
 authorizer_appid string COMMENT 'None',
 is_authorization_canceled bigint COMMENT 'None',
@@ -581,8 +584,8 @@ mch_id string COMMENT 'None',
 api_key string COMMENT 'None',
 brand_id bigint COMMENT 'None',
 cert_path string COMMENT 'None') COMMENT 'None'
-    PARTITIONED BY (ds string) LIFECYCLE 14;
-    CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info_delta (
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_tt_tenant_wechat_3rd_info_delta (
                 id bigint COMMENT 'None',
 tenant_id bigint COMMENT 'None',
 authorizer_appid string COMMENT 'None',
@@ -614,4 +617,241 @@ api_key string COMMENT 'None',
 brand_id bigint COMMENT 'None',
 cert_path string COMMENT 'None') COMMENT 'None'
             PARTITIONED BY (ds string) ;
-            
+            CREATE TABLE IF NOT EXISTS s_crm_mb_area_crm_link (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+system_id string COMMENT '外部系统ID',
+original_id string COMMENT '原系统ID',
+original_name string COMMENT '原系统名称',
+crm_id bigint COMMENT '内部ID',
+status string COMMENT '状态') COMMENT '园区内外关系表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_area_crm (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+name string COMMENT '名称',
+hotel_brand_id string COMMENT '品牌ID',
+hotel_brand_name string COMMENT '品牌名称',
+hotel_group_id string COMMENT '集团ID',
+hotel_group_name string COMMENT '集团名称',
+travel_city_id bigint COMMENT '文旅城ID',
+business_format_id bigint COMMENT '业态ID',
+company_name string COMMENT '公司名称',
+company_id string COMMENT '公司ID',
+is_link bigint COMMENT '是否有外部对应关系') COMMENT '园区表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_travel_city_crm (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+name string COMMENT '名称',
+longitude string COMMENT '经度',
+latitude string COMMENT '纬度',
+is_link bigint COMMENT '是否有外部对应关系') COMMENT '文旅城表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_travel_city_crm_link (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+original_id string COMMENT '原系统ID',
+original_name string COMMENT '原系统名称',
+crm_id bigint COMMENT '内部ID',
+system_id string COMMENT '外部系统ID') COMMENT '文旅城内外关系表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_business_format_rule (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+name string COMMENT '名称') COMMENT '业态规则表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_sfso_t_refund (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+system_id string COMMENT '系统标识',
+member_no string COMMENT '会员码',
+mobile string COMMENT '手机号',
+order_id bigint COMMENT '系统子订单ID',
+out_refund_no string COMMENT '退订订单ID',
+refund_amount string COMMENT '退款金额',
+user_card_code string COMMENT '优惠券编号',
+extend_info string COMMENT '退订扩展信息',
+brand_id bigint COMMENT '品牌ID',
+person_id bigint COMMENT '所属人唯一标识',
+trade_id bigint COMMENT '系统母单ID') COMMENT '系统退单表'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mbc_coupon_info_crm (
+            id bigint COMMENT 'id',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+creator bigint COMMENT 'creator',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+is_shelf bigint COMMENT '是否上下架',
+delivery_method string COMMENT '投放方式',
+crm_store_group_ids string COMMENT '发券门店组id集合',
+time_limit_type string COMMENT '可用时段类型',
+least_cost bigint COMMENT '满减门槛字段',
+fixed_term bigint COMMENT '领取后多少天内有效',
+get_limit bigint COMMENT '每人可领取的数量',
+is_superimposed bigint COMMENT '是否叠加',
+status string COMMENT '状态',
+deal_detail string COMMENT '团购详情',
+coupon_channel_type string COMMENT '发券门店组',
+bind_openid bigint COMMENT '是否制定用户领取',
+gift string COMMENT '兑换内容',
+is_activate bigint COMMENT '是否激活',
+coupon_type string COMMENT '卡券类型',
+begin_timestamp string COMMENT '起用时间',
+reduce_cost bigint COMMENT '减免金额',
+fixed_begin_term bigint COMMENT '领取后多少天生效',
+discount string COMMENT '打折额度',
+wx_storegroup_ids string COMMENT '适用门店组id集合',
+reject_category string COMMENT '指定不可用的商品类目',
+card_id string COMMENT '会员卡id',
+use_condition string COMMENT '使用门槛',
+is_valid bigint COMMENT '生效状态',
+date_info_type string COMMENT '时间类型',
+accept_category string COMMENT '指定可用的商品类目',
+remark string COMMENT '卡券备注',
+title string COMMENT '卡券名称',
+default_detail string COMMENT '优惠详情',
+use_all_locations bigint COMMENT '设置卡券支持全部门店',
+can_use_with_other_discount bigint COMMENT '不可以与其他类型共享门槛',
+invalid_remark string COMMENT '卡券失效原因',
+delivery_number string COMMENT '门店均发量',
+location_id_list string COMMENT '适用门店id集合',
+quantity string COMMENT '卡券库存数量',
+invalid_number string COMMENT '失效数量',
+delivery_source string COMMENT '获取来源',
+can_give_friend bigint COMMENT '卡券是否可转增',
+end_timestamp string COMMENT '结束时间',
+coupon_status_vir string COMMENT '作废状态',
+coupon_receive_finish_vir string COMMENT '已领取',
+coupon_use_finish_vir string COMMENT '已使用',
+coupon_use_no_vir string COMMENT '未使用',
+success_store_vir string COMMENT '生效门店',
+brand_id bigint COMMENT '品牌id',
+travel_city_id_list string COMMENT '文旅城id集合',
+business_format_id bigint COMMENT '适用业态id',
+area_id_list string COMMENT '园区id集合',
+max_reduce_cost bigint COMMENT '最高减免金额(折扣券用)',
+description string COMMENT '使用说明',
+activate_user_id bigint COMMENT '激活人id',
+activate_time string COMMENT '激活时间',
+template_id string COMMENT '对外优惠券模板id',
+range_name string COMMENT '适用范围',
+store_category_id bigint COMMENT '适用门店分类id') COMMENT 'CRM优惠券信息'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        CREATE TABLE IF NOT EXISTS s_crm_mb_contact (
+            id bigint COMMENT 'Contact#',
+tenant_id bigint COMMENT 'tenant_id',
+organization bigint COMMENT 'organization',
+owner bigint COMMENT 'owner',
+updater bigint COMMENT 'updater',
+position bigint COMMENT 'position',
+create_time string COMMENT 'create_time',
+update_time string COMMENT 'update_time',
+startTime string COMMENT 'startTime',
+finishTime string COMMENT 'finishTime',
+address string COMMENT 'Address',
+annual_income string COMMENT 'annual_income',
+birthday string COMMENT 'birthday',
+contactType string COMMENT 'contact_type',
+education_level string COMMENT 'education_level',
+gender string COMMENT 'Gender',
+headpic string COMMENT 'headpic',
+industry string COMMENT 'industry',
+is_member bigint COMMENT 'isMember',
+QQ string COMMENT 'QQ',
+identity string COMMENT 'identity',
+real_name string COMMENT 'real_name',
+contact_source string COMMENT '客户来源',
+province string COMMENT '所在省份',
+city string COMMENT '所在城市',
+zipcode string COMMENT '邮编',
+area_code string COMMENT '电话区号',
+nick_name string COMMENT '昵称',
+obj_contact_type string COMMENT '客户属性',
+remark string COMMENT '备注',
+member_id bigint COMMENT '会员ID',
+county string COMMENT '县(区)',
+store_id bigint COMMENT '门店id',
+contact_frozen_status string COMMENT '客户状态',
+creator bigint COMMENT '创建人',
+mailbox string COMMENT '邮箱',
+profession string COMMENT '职业',
+passport string COMMENT '护照',
+identification_end_time string COMMENT '身份证有效期',
+passport_end_time string COMMENT '护照有效期',
+other_phone string COMMENT '其他电话',
+weixin string COMMENT '微信号',
+wangwang string COMMENT '旺旺',
+Alipay string COMMENT 'Alipay',
+nationality string COMMENT '国籍',
+bind_shop_guide bigint COMMENT '绑定导购',
+bind_store bigint COMMENT '绑定门店id',
+guide_id bigint COMMENT '导购id',
+total_consume_count_vir string COMMENT '消费次数总计',
+last_consume_date_vir string COMMENT '最后消费时间',
+total_amount_vir string COMMENT '消费金额总计',
+year_fee_count_vir string COMMENT '一年内消费次数',
+late_store_name_vir string COMMENT '最近消费门店',
+late_pay_time_vir string COMMENT '最进消费时间') COMMENT '个人客户'
+        PARTITIONED BY (ds string) LIFECYCLE 14;
+        

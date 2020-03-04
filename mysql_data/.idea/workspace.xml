@@ -2,15 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9e27344-8ec1-4fb7-9281-fbb4ea7ba04c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/create_table_info_2020_01_10_17_47_49.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/merge_sql_info_2020_01_10_17_47_49.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/table_info_2020_01_10_17_47_49.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/mysql_data.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mysql_data.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/create_table_info_2020_02_28_11_41_15.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/merge_sql_info_2020_02_28_11_41_15.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/table_info_2020_02_25_14_06_18.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/table_info_2020_02_28_11_41_15.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_table_info_2020_01_09_18_58_52.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_table_info_2020_01_14_15_15_46.sql" beforeDir="false" afterPath="$PROJECT_DIR$/create_table_info_2020_02_25_14_06_18.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/merge_sql_info_2020_01_14_15_15_46.sql" beforeDir="false" afterPath="$PROJECT_DIR$/merge_sql_info_2020_02_25_14_06_18.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mysql_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysql_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/table_info_2020_01_09_18_58_52.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/table_info_2020_01_14_15_15_46.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/table_info_2020_02_24_16_03_34.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据中台ODS层设计文档_v1.0@20200108.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据中台ODS层设计文档_v1.0@20200110.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/数据中台ODS层设计文档_v1.0@20200110.xlsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -228,7 +234,7 @@
     </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -248,7 +254,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

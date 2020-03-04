@@ -230,7 +230,7 @@ source_info.k_refer_col_name
 ;
 """
 
-file='数据中台ODS层设计文档_v1.0@20200108.xlsx'
+file='数据中台ODS层设计文档_v1.0@20200110.xlsx'
 
 def mysql_data_change(sq_data):
     '''

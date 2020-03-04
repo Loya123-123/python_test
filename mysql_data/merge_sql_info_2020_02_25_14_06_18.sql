@@ -1,5 +1,5 @@
 
-INSERT OVERWRITE TABLE s_crm_mb_member_points_coupon_deal PARTITION(ds='${bdp.system.bizdae}')
+INSERT OVERWRITE TABLE s_crm_mb_member_points_coupon_deal PARTITION(ds='${bdp.system.bizdate}')
 SELECT  id,
 tenant_id,
 organization,
@@ -99,13 +99,13 @@ coupon_config_id,
 person_id,
 brand_contact_id
                         FROM    s_crm_mb_member_points_coupon_deal_delta
-                        WHERE   ds = '${bdp.system.bizdae}'
+                        WHERE   ds = '${bdp.system.bizdate}'
                     ) a
         ) b
 WHERE   num = 1
 ;
 
-INSERT OVERWRITE TABLE s_crm_mb_member_points_log PARTITION(ds='${bdp.system.bizdae}')
+INSERT OVERWRITE TABLE s_crm_mb_member_points_log PARTITION(ds='${bdp.system.bizdate}')
 SELECT  id,
 tenant_id,
 organization,
@@ -265,13 +265,13 @@ crm_order_num,
 order_screen_shot_address,
 outer_guide_id
                         FROM    s_crm_mb_member_points_log_delta
-                        WHERE   ds = '${bdp.system.bizdae}'
+                        WHERE   ds = '${bdp.system.bizdate}'
                     ) a
         ) b
 WHERE   num = 1
 ;
 
-INSERT OVERWRITE TABLE s_crm_sfso_t_order PARTITION(ds='${bdp.system.bizdae}')
+INSERT OVERWRITE TABLE s_crm_sfso_t_order PARTITION(ds='${bdp.system.bizdate}')
 SELECT  id,
 tenant_id,
 organization,
@@ -455,13 +455,13 @@ product_category,
 night_audit_amount,
 crs_order_no
                         FROM    s_crm_sfso_t_order_delta
-                        WHERE   ds = '${bdp.system.bizdae}'
+                        WHERE   ds = '${bdp.system.bizdate}'
                     ) a
         ) b
 WHERE   num = 1
 ;
 
-INSERT OVERWRITE TABLE s_crm_tt_tenant_wechat_3rd_info PARTITION(ds='${bdp.system.bizdae}')
+INSERT OVERWRITE TABLE s_crm_tt_tenant_wechat_3rd_info PARTITION(ds='${bdp.system.bizdate}')
 SELECT  id,
 tenant_id,
 authorizer_appid,
@@ -589,7 +589,7 @@ api_key,
 brand_id,
 cert_path
                         FROM    s_crm_tt_tenant_wechat_3rd_info_delta
-                        WHERE   ds = '${bdp.system.bizdae}'
+                        WHERE   ds = '${bdp.system.bizdate}'
                     ) a
         ) b
 WHERE   num = 1
